@@ -2,7 +2,7 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.db import models
 
-from DetecterViolations import settings
+from DetecterViolation import settings
 
 
 class CustomUserManager(BaseUserManager):
@@ -50,7 +50,7 @@ class CustomUser(AbstractUser, PermissionsMixin):
     last_name = models.CharField(max_length=50, null=True)
     gender = models.IntegerField(choices=settings.GENDER_CHOICES, default=1)
     birthday = models.DateField(null=True)
-    photo = models.ImageField(upload_to='photos/users', null=True, blank=True, default=None)
+    photo = models.ImageField(upload_to='users/', null=True, blank=True, default=None)
 
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

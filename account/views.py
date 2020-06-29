@@ -7,13 +7,12 @@ from account.forms import CustomUserAuthenticationForm, UserUpdateForm
 
 
 @login_required
-def violations_view(request):
-    """Dashboard"""
+def violation_view(request):
     context = {
         'nbar': '',
     }
 
-    return render(request, 'account/violations.html', context=context)
+    return render(request, 'violation/violation.html', context=context)
 
 
 def logout_view(request):
@@ -63,14 +62,10 @@ def update_user_view(request):
         form = UserUpdateForm(
             initial={
                 "email": request.user.email,
-                # "username": request.user.username,
                 "first_name": request.user.first_name,
                 "last_name": request.user.last_name,
                 "birthday": request.user.birthday,
                 "gender": request.user.gender,
-                "job_title": request.user.job_title,
-                "phone": request.user.phone,
-                "email_notify": request.user.email_notify,
                 "photos": request.user.photo,
             }
         )

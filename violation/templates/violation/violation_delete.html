@@ -1,0 +1,29 @@
+{% extends 'violation_base.html' %}
+{% load i18n %}
+
+{% block title %}
+
+    {% trans "Delete violation" %} {{ violation.description|title }} - {{ block.super }}
+
+{% endblock %}
+
+{% block page_title %}
+    {% trans "Delete violation" %}
+{% endblock %}
+
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'violation_list_url' %}">{% trans "Violation" %}</a></li>
+    <li class="breadcrumb-item active">{% trans "violation delete" %}</li>
+{% endblock %}
+
+{% block content %}
+
+    <form action="{{ violation.get_delete_url }}" method="post">
+    {% csrf_token %}
+    <h4>{% trans "Are you sure you want to delete" %} {{ violation.description|title }}</h4>
+        <a class="btn btn-default" href="{% url 'violation_list_url' %}">{% trans "Cancel" %}</a>
+    <button type="submit" name="button" class="btn btn-danger">{% trans "Delete" %}</button>
+    </form>
+    
+{% endblock %}

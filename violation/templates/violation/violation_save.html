@@ -1,0 +1,62 @@
+{% extends 'violation_base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Create Violation" %} - {{ block.super }}
+{% endblock %}
+
+{% block page_title %}
+    {% trans "Create new violation" %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'violation_list_url' %}">{% trans "Violations" %}</a></li>
+    <li class="breadcrumb-item active">{% trans "Violation create" %}</li>
+{% endblock %}
+
+{% block content %}
+    <!-- MAP & BOX PANE -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">{% trans "Create violation" %}</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-widget="remove">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0 mt-3 mb-3">
+            <div class="col-12">
+                <div class="p-1 flex-1 " style="overflow: hidden">
+
+                    <div class="col-12">
+                        <form action="{% url 'violation_create_url' %}" method="post">
+
+                            {% csrf_token %}
+
+                            {% for field in form %}
+                                <div class="form-group">
+                                    {% if field.errors %}
+                                        <div class="alert alert-danger">
+                                            {{ field.errors }}
+                                        </div>
+                                    {% endif %}
+                                    {{ field.label }}
+                                </div>
+                            {% endfor %}
+                            <button type="submit" name="button"
+                                    class="btn btn-success">{% trans "Create Violation" %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.d-md-flex -->
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+{% endblock %}

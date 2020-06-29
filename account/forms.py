@@ -1,11 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-# from django.core.exceptions import ValidationError
-
 from .models import CustomUser
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
-# from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 
 
 class DateInput(forms.DateInput):
@@ -40,14 +37,12 @@ class UserUpdateForm(forms.ModelForm):
 
         widgets = {
             'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Email")}),
-            # 'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Username")}),
             'first_name': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': _("First name"), 'required': 'false'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Last name")}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
             'birthday': DateInput(attrs={'type': 'text', 'class': 'form-control datetimepicker-input', 'data-target': '#datetimepicker1', 'id': 'datetimepicker1'}),
 
-            # 'photo': forms.FileInput(attrs={'capture': 'camera'}),
         }
 
     def clean_email(self):
@@ -65,11 +60,6 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class CustomUserCreationForm(UserCreationForm):
-    """
-    A form that creats a custom user with no privilages
-    form a provided email and password.
-    """
-
     def __init__(self, *args, **kargs):
         super(CustomUserCreationForm, self).__init__(*args, **kargs)
         del self.fields['username']
@@ -80,12 +70,6 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomUserChangeForm(UserChangeForm):
-    """
-    A form for updating users. Includes all the fields on
-    the user, but replaces the password field with admin's
-    password hash display field.
-    """
-
     def __init__(self, *args, **kargs):
         super(CustomUserChangeForm, self).__init__(*args, **kargs)
         del self.fields['username']

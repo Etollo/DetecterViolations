@@ -25,7 +25,6 @@
 </head>
 <body class="hold-transition login-page">
 
-
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -41,9 +40,7 @@
                 <ol class="breadcrumb float-sm-right">
 
                     {% block breadcrumbs %}
-
                     {% endblock %}
-
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -55,7 +52,7 @@
 
     <!-- login-logo -->
     <div class="login-logo">
-        <a href="{% url 'violations_url' %}">{% trans "Quality" %}<b>{% trans "Managment" %}</b>System</a>
+        <a href="{% url 'violations_url' %}">{% trans "Violations Managment" %}</a>
     </div>
     <!-- /.login-logo -->
 
@@ -85,22 +82,12 @@
                             <span class="fa fa-lock form-control-feedback"></span>
                         </div>
                         <div class="row">
-                            {#                    <div class="col-8">#}
-                            {#                        <div class="checkbox icheck">#}
                         </div>
                         <div class="form-group has-feedback">
                             <input type="password" class="form-control" placeholder="Password">
                             <span class="fa fa-lock form-control-feedback"></span>
                         </div>
                         <div class="row">
-                            {#                    <div class="col-8">#}
-                            {#                        <div class="checkbox icheck">#}
-                            {#                            <label>#}
-                            {#                                <input type="checkbox"> Remember Me#}
-                            {#                            </label>#}
-                            {#                        </div>#}
-                            {#                    </div>#}
-                            <!-- /.col -->
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                             </div>
@@ -109,8 +96,6 @@
                     </form>
                 {% endblock %}
                 <br>
-
-
                 <p class="mb-1">
                     <a href="{% url 'password_reset' %}">{% trans "I forgot my password" %}</a>
                 </p>
@@ -121,7 +106,6 @@
             <!-- /.login-card-body -->
         </div>
     {% endblock %}
-
 </div>
 <!-- /.login-box -->
 
