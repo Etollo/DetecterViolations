@@ -9,4 +9,6 @@ urlpatterns = [
     path('detail/<int:id>/', login_required(ViolationDetail.as_view()), name="violation_detail_url"),
     path('update/<int:id>/', login_required(ViolationUpdate.as_view()), name="violation_update_url"),
     path('delete/<int:id>/', login_required(ViolationDelete.as_view()), name="violation_delete_url"),
+
+    path('violation/create/', ViolationCreateView.as_view(), name="violation_create_rest_url")
 ]

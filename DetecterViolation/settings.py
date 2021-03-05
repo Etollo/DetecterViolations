@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'account',
     'violation',
+    'rest_framework',
     
     'django.contrib.admin',
     'django.contrib.auth',

@@ -8,6 +8,12 @@ from DetecterViolation import constants
 from violation.forms import ViolationForm
 from violation.models import Violation
 from violation.utils import ObjectDeleteMixin, ObjectUpdateMixin, ObjectViolationMixin
+from rest_framework import generics
+from violation.serializers import ViolationDetailSerializer
+
+
+class ViolationCreateView(generics.CreateAPIView):
+    serializer_class = ViolationDetailSerializer
 
 
 class ViolationSave(View):

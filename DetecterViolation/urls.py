@@ -25,4 +25,6 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('violation/', include('violation.urls')),
     path('', login_view, name="login"),
+    # Try use Django REST Framework
+    path('api/v1/violation/', include('violation.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
